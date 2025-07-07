@@ -45,15 +45,15 @@ h1 {
 }
 
 .search-box {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 15px;
-    background-color: var(--ifpr-white);
+    background-color: transparent;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     margin-bottom: 20px;
-    color: var(--ifpr-white);
+    color: transparent;
 }
 
 input {

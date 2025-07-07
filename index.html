@@ -23,12 +23,13 @@
                     <input type="text" id="todo-input" placeholder="Nome">
                     
                 </div>
+                <input type="text" id="cep-input" placeholder="Digite o CEP (somente números)" maxlength="8">
                 <div class="search-box">
-                    <input type="text" id="cep-input" placeholder="Digite o CEP (somente números)" maxlength="8">
+                    
                     <button id="search-btn"><i></i></button>
                 </div>
                 <div class="tab-section">
-                    <button class="tab active" onclick="showTab('pending')">Alunos</button>
+                    <button class="tab active" onclick="showTab('pending')">Salvos</button>
                     
                 </div>
                 <ul id="todo-list-pending" class="todo-list"></ul>
@@ -89,7 +90,7 @@
                         <span id="siafi-result" class="value">-</span>
                     </div>
                 </div>
-                <button id="new-search-btn"><i class="fas fa-redo"></i> Salvar aluno?</button>
+                <button id="new-search-btn"></i> Salvar aluno?</button>
             </div>
 
             <div class="error-message" id="error-message" style="display: none;">
