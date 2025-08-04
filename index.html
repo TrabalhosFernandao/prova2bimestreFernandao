@@ -3,106 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta CEP - IFPR</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Cadastro de Alunos - Instituto Federal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo-container">
-                <img src="img/IFPR.png" alt="IFPR Logo" class="logo">
+        <div class="header">
+            <div class="logo">
+                <img src="img/ifpr.png" alt="IFPR Logo" class="logo-img">
             </div>
-            <h1>Consulta de CEP</h1>
-            <p>Instituto Federal do Paraná</p>
-        </header>
-        <body>
-            <h1>Tarefas</h1>
-            <div class="todo-container">
-                <div class="input-section">
-                    <input type="text" id="todo-input" placeholder="Nome">
-                    
-                </div>
-                <input type="text" id="cep-input" placeholder="Digite o CEP (somente números)" maxlength="8">
-                <div class="search-box">
-                    
-                    <button id="search-btn"><i></i></button>
-                </div>
-                <div class="tab-section">
-                    <button class="tab active" onclick="showTab('pending')">Salvos</button>
-                    
-                </div>
-                <ul id="todo-list-pending" class="todo-list"></ul>
-                <ul id="todo-list-completed" class="todo-list" style="display: none;"></ul>
-            </div>
-        
-            <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-            <script src="script.js"></script>
-        </body>  
-        <main>
-             
+            <h1>Cadastro de Alunos</h1>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+        <div class="form-section">
+            <form id="studentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <div class="autocomplete-container">
+                            <input type="text" id="nome" name="nome" required>
+                            <div class="autocomplete-suggestions" id="nome-suggestions"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" name="endereco" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" name="numero" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" readonly>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="uf">UF</label>
+                        <input type="text" id="uf" name="uf" maxlength="2" readonly>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <svg class="search-icon icon" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar usuário por nome...">
+            </div>
+        </div>
+
+        <div class="students-grid" id="studentsGrid">
             
-            
-
-            <div class="result-container" id="result-container" style="display: none;">
-                <h2>Resultado da Consulta</h2>
-                <div class="result-grid">
-                    <div class="result-item">
-                        <span class="label">CEP:</span>
-                        <span type="text" id="cep-result" >-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Logradouro:</span>
-                        <span id="logradouro-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Complemento:</span>
-                        <span id="complemento-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Bairro:</span>
-                        <span id="bairro-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Localidade:</span>
-                        <span id="localidade-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">UF:</span>
-                        <span id="uf-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">IBGE:</span>
-                        <span id="ibge-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">GIA:</span>
-                        <span id="gia-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">DDD:</span>
-                        <span id="ddd-result" class="value">-</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">SIAFI:</span>
-                        <span id="siafi-result" class="value">-</span>
-                    </div>
-                </div>
-                <button id="new-search-btn"></i> Salvar aluno?</button>
-            </div>
-
-            <div class="error-message" id="error-message" style="display: none;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span id="error-text">CEP não encontrado!</span>
-            </div>
-        </main>
-
-        <footer>
-            <p>Desenvolvido por <strong>IFPR</strong> - Instituto Federal do Paraná</p>
-            <p>API utilizada: <a href="https://viacep.com.br" target="_blank">ViaCEP</a></p>
-        </footer>
+        </div>
     </div>
 
     <script src="script.js"></script>
